@@ -1,4 +1,4 @@
-package com.foosball.foosball;
+package com.andy.foosball;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
