@@ -36,4 +36,6 @@ public class PlayerApplicationService {
         playerRepository.delete(player);
     }
 
+    
+
 }
