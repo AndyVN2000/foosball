@@ -60,4 +60,16 @@ public class PlayerApplicationService {
             collect(Collectors.toList());
     }
 
+    public PlayerSummary findPlayerByName(String name) {
+        Player player = playerRepository.findByName(name).
+            orElseThrow(() -> new PlayerNotFoundException());
+        return new PlayerSummary(player.getName(), player.getInitials(), player.getHandicap());
+    }
+
+    public PlayerSummary findPlayerByInitials(String initials) {
+        Player player = playerRepository.findByInitials(initials).
+            orElseThrow(() -> new PlayerNotFoundException());
+        return new PlayerSummary(player.getName(), player.getInitials(), player.getHandicap());
+    }
+
 }
