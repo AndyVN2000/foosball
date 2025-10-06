@@ -30,4 +30,10 @@ public class PlayerApplicationService {
         playerRepository.delete(player);
     }
 
+    public void deletePlayerByInitials(String initials) {
+        Player player = playerRepository.findByInitials(initials).
+            orElseThrow(() -> new PlayerNotFoundException());
+        playerRepository.delete(player);
+    }
+
 }
