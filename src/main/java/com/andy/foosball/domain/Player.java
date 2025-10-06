@@ -4,7 +4,7 @@ public class Player {
 
     private String name;
     private String initials;
-    private int handicap;
+    private int handicap = 10;
 
     private Player(String name, String initials, int handicap) {
         this.name = name;
