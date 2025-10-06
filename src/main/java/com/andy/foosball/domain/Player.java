@@ -28,4 +28,16 @@ public class Player {
         initials = newInitials;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getInitials() {
+        return initials;
+    }
+
+    public int getHandicap() {
+        return handicap;
+    }
+
 }
