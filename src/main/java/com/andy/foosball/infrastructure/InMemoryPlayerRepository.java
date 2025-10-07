@@ -30,20 +30,19 @@ public class InMemoryPlayerRepository implements PlayerRepository {
 
     @Override
     public Optional<Player> findByInitials(String initials) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByInitials'");
+        return players.stream()
+            .filter(player -> initials.equals(player.getInitials()))
+            .findAny();
     }
 
     @Override
     public void delete(Player player) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        players.remove(player);
     }
 
     @Override
     public List<Player> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        return players;
     }
 
 }
