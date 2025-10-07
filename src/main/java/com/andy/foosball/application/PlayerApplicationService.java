@@ -27,14 +27,14 @@ public class PlayerApplicationService {
      * spiller gennem name eller initials.
      */
     public void deletePlayerByName(String name) {
-        Player player = playerRepository.findByName(name).
-            orElseThrow(() -> new PlayerNotFoundException());
+        Player player = playerRepository.findByName(name)
+            .orElseThrow(() -> new PlayerNotFoundException());
         playerRepository.delete(player);
     }
 
     public void deletePlayerByInitials(String initials) {
-        Player player = playerRepository.findByInitials(initials).
-            orElseThrow(() -> new PlayerNotFoundException());
+        Player player = playerRepository.findByInitials(initials)
+            .orElseThrow(() -> new PlayerNotFoundException());
         playerRepository.delete(player);
     }
 
@@ -44,31 +44,31 @@ public class PlayerApplicationService {
      * Angående den konkrete sortering fandt jeg inspiration herfra: https://stackoverflow.com/questions/40517977/sorting-a-list-with-stream-sorted-in-java
      * */
     public List<PlayerSummary> listAllPlayers() {
-        return playerRepository.findAll().stream().
-            sorted(
+        return playerRepository.findAll().stream()
+            .sorted(
                 (p0, p1) -> 
                     Integer.valueOf(p0.getHandicap()).compareTo(Integer.valueOf(p1.getHandicap()))
-                ).
-            map(
+                )
+            .map(
                 player -> {
                     return new PlayerSummary(
                         player.getName(), 
                         player.getInitials(), 
                         player.getHandicap()
                     );
-            }).
-            collect(Collectors.toList());
+            })
+            .collect(Collectors.toList());
     }
 
     public PlayerSummary findPlayerByName(String name) {
-        Player player = playerRepository.findByName(name).
-            orElseThrow(() -> new PlayerNotFoundException());
+        Player player = playerRepository.findByName(name)
+        .orElseThrow(() -> new PlayerNotFoundException());
         return new PlayerSummary(player.getName(), player.getInitials(), player.getHandicap());
     }
 
     public PlayerSummary findPlayerByInitials(String initials) {
-        Player player = playerRepository.findByInitials(initials).
-            orElseThrow(() -> new PlayerNotFoundException());
+        Player player = playerRepository.findByInitials(initials)
+            .orElseThrow(() -> new PlayerNotFoundException());
         return new PlayerSummary(player.getName(), player.getInitials(), player.getHandicap());
     }
 
