@@ -19,6 +19,8 @@ public class Player {
     private @Column String initials;
     private @Column int handicap = 10;
 
+    public Player(){}
+
     private Player(String name, String initials, int handicap) {
         this.name = name;
         this.initials = initials;
