@@ -3,7 +3,9 @@ package com.andy.foosball.domain;
 import java.util.List;
 import java.util.Optional;
 
-public interface PlayerRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PlayerRepository extends JpaRepository<Player, String> {
 
     Player save(Player player);
 
