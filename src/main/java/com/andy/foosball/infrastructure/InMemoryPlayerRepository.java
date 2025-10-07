@@ -24,7 +24,9 @@ public class InMemoryPlayerRepository implements PlayerRepository {
 
     @Override
     public Player save(Player player) {
+        System.out.println("Adding a new player");
         players.add(player);
+        System.out.println("Number of players after saving: " + players.size());
         return player;
     }
 
@@ -49,6 +51,8 @@ public class InMemoryPlayerRepository implements PlayerRepository {
 
     @Override
     public List<Player> findAll() {
+        System.out.println("Returning all Players");
+        System.out.println("Number of players: " + players.size());
         return players;
     }
 

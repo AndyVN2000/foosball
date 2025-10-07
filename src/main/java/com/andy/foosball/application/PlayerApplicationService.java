@@ -19,6 +19,7 @@ public class PlayerApplicationService {
 
     public void createPlayer(String name, String initials, OptionalInt handicap) {
         Player newPlayer = Player.createPlayer(name, initials, handicap.orElse(10));
+        playerRepository.save(newPlayer);
     }
 
     /**

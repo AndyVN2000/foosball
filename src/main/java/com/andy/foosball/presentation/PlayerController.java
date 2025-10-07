@@ -35,6 +35,7 @@ public class PlayerController {
      */
     @PostMapping("/players")
     Player newPlayer(@RequestBody Player player) {
+        System.out.println("Invoked POST to create new player");
         playerApplicationService.createPlayer(
             player.getName(),
             player.getInitials(),
