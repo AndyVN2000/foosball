@@ -4,7 +4,9 @@ import com.andy.foosball.application.PlayerApplicationService;
 import com.andy.foosball.application.PlayerSummary;
 import com.andy.foosball.domain.Player;
 import com.andy.foosball.domain.PlayerRepository;
+import com.andy.foosball.infrastructure.InMemoryPlayerRepository;
 
+import java.util.List;
 import java.util.OptionalInt;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,8 @@ public class PlayerController {
     PlayerApplicationService playerApplicationService;
 
     public PlayerController(PlayerRepository playerRepository) {
-        this.playerApplicationService = new PlayerApplicationService(playerRepository);
+        this.playerRepository = new InMemoryPlayerRepository();
+        this.playerApplicationService = new PlayerApplicationService(this.playerRepository);
     }
 
     /**
@@ -47,6 +50,12 @@ public class PlayerController {
     @GetMapping("/players/{name}")
     PlayerSummary getPlayer(@PathVariable String name) {
         return playerApplicationService.findPlayerByName(name);
+    }
+
+    @GetMapping("/players")
+    List<Player> getAllPlayers() {
+        System.out.println("INVOKED GET ALL PLAYERS");
+        return playerRepository.findAll();
     }
 
 }
