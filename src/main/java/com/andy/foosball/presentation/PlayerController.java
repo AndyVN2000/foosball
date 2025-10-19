@@ -48,6 +48,8 @@ public class PlayerController {
      * Hvad jeg har lært, så har man DTO'er som substitut til at skjule indholdet af Domain entities.
      * Jeg er ikke 100% sikker på at min GET metode skal så returnere en DTO (PlayerSummary) eller ej.
      * Men det giver mest mening i mit hoved hvis det gør.
+     * 
+     * Forklarer om annotation attributes (se sektion 4. Annotation Attributes): https://howtodoinjava.com/spring-mvc/controller-getmapping-postmapping/#2-spring-getmapping-example
      */
     @GetMapping(value = "/players", params = "name")
     PlayerSummary getPlayer(@RequestParam String name) {
