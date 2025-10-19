@@ -23,7 +23,7 @@ public class PlayerController {
     PlayerApplicationService playerApplicationService;
 
     public PlayerController(PlayerRepository playerRepository) {
-        this.playerRepository = new InMemoryPlayerRepository();
+        this.playerRepository = playerRepository;
         this.playerApplicationService = new PlayerApplicationService(this.playerRepository);
     }
 

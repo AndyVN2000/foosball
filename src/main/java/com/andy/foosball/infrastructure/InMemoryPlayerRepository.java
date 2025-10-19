@@ -6,11 +6,13 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collector;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
+import org.springframework.stereotype.Repository;
 
 import com.andy.foosball.application.exceptions.PlayerNotFoundException;
 import com.andy.foosball.domain.Player;
@@ -18,7 +20,16 @@ import com.andy.foosball.domain.PlayerRepository;
 
 /**
  * Inspired by: https://dev.to/yasmine_ddec94f4d4/onion-architecture-in-domain-driven-design-ddd-35gn
+ * 
+ * Notes:
+ * I use the @Repository annotation to declare this class as a bean - an instance that the
+ * Spring framework must manage.
+ * Additionally I add @Primary annotation to declare that the framework must inject this
+ * specific bean when the application is run.
  */
+
+@Repository
+@Primary
 public class InMemoryPlayerRepository implements PlayerRepository {
     private List<Player> players = new ArrayList<>();
 
