@@ -19,3 +19,9 @@ Get all players.
 ```bash
 curl localhost:8080/players
 ```
+
+Find a player by name. (`%20` is URL-encoding for space character).
+
+```bash
+curl "localhost:8080/players?name=Foo%20Bar"
+```
