@@ -18,7 +18,6 @@ public class LoadDatabase {
 @Bean
 CommandLineRunner initDatabase(PlayerRepository repository) {
     return args -> {
-        System.out.println("-------------- INITIALIZING DATABASE ------------------");
         repository.save(Player.createPlayerWithDefaultHandicap("Foo Bar", "F.B"));
     };
 }
