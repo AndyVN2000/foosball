@@ -31,3 +31,9 @@ Delete a player by name.
 ```bash
 curl -X DELETE "localhost:8080/players?name=Foo%20Bar"
 ```
+
+Change player name.
+
+```bash
+curl -X PUT "localhost:8080/players?name=Foo%20Bar&newName=Foo"
+```

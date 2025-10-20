@@ -69,12 +69,11 @@ public class PlayerController {
         playerApplicationService.deletePlayerByName(name);
     }
 
-    // TODO
-    @Deprecated
     @PutMapping(value = "/players", params = {"name", "newName"})
-    PlayerSummary changePlayerName(@RequestParam String name, @RequestParam String newName) {
-        playerApplicationService.findPlayerByName(name);
-        return null;
+    void changePlayerName(@RequestParam String name, @RequestParam String newName) {
+        PlayerSummary player = playerApplicationService.findPlayerByName(name);
+        playerApplicationService.createPlayer(newName, player.initials(), OptionalInt.of(player.handicap()));
+        playerApplicationService.deletePlayerByName(name);
     }
 
 }
