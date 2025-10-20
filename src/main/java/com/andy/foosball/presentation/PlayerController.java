@@ -9,6 +9,7 @@ import com.andy.foosball.infrastructure.InMemoryPlayerRepository;
 import java.util.List;
 import java.util.OptionalInt;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,6 +62,11 @@ public class PlayerController {
     List<Player> getAllPlayers() {
         System.out.println("INVOKED GET ALL PLAYERS");
         return playerRepository.findAll();
+    }
+
+    @DeleteMapping(value = "/players", params = "name")
+    void deletePlayerByName(@RequestParam String name) {
+        playerApplicationService.deletePlayerByName(name);
     }
 
     // TODO
