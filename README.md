@@ -37,3 +37,8 @@ Change player name.
 ```bash
 curl -X PUT "localhost:8080/players?name=Foo%20Bar&newName=Foo"
 ```
+
+## Issues
+
+I seem to be unable to make a match end properly and as result change the handicaps for the winners and losers.
+Do I need to implement my own implementation of `MatchRepository` instead of Spring generating a Proxy?
