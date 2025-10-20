@@ -53,3 +53,4 @@ curl -X PUT "localhost:8080/matches/0"
 I seem to be unable to make a match end properly and as result change the handicaps for the winners and losers. The call on `endMatch()` in the Domain works. But the state of the participating players
 does not change...
 Do I need to implement my own implementation of `MatchRepository` instead of Spring generating a Proxy?
+Conclusion: Yes, that actually solves my issue.

@@ -21,6 +21,10 @@ public class Match {
         matchId = id;
     }
 
+    public int getId() {
+        return matchId;
+    }
+
     /**
      * Not really proud of this. Surely there must be a better way...
      * @param team
