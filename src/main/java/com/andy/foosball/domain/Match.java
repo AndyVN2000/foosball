@@ -10,10 +10,12 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Match {
-    private final @Id Integer matchId;
+    private @Id Integer matchId;
     private @OneToMany List<Player> redTeam;
     private @OneToMany List<Player> blueTeam;
     private Team winnerTeam;
+
+    public Match(){}
 
     public Match(int id){
         matchId = id;

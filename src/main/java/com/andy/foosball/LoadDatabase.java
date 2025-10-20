@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.andy.foosball.domain.Match;
+import com.andy.foosball.domain.MatchRepository;
 import com.andy.foosball.domain.Player;
 import com.andy.foosball.domain.PlayerRepository;
 
@@ -16,9 +18,13 @@ import com.andy.foosball.domain.PlayerRepository;
 public class LoadDatabase {
 
 @Bean
-CommandLineRunner initDatabase(PlayerRepository repository) {
+CommandLineRunner initDatabase(PlayerRepository playerRepository, MatchRepository matchRepository) {
     return args -> {
-        repository.save(Player.createPlayerWithDefaultHandicap("Foo Bar", "F.B"));
+        matchRepository.save(new Match(0));
+        playerRepository.save(Player.createPlayerWithDefaultHandicap("Foo Bar", "F.B."));
+        playerRepository.save(Player.createPlayerWithDefaultHandicap("Baz Bar", "B.B."));
+        playerRepository.save(Player.createPlayer("Joe", "J", 15));
+        playerRepository.save(Player.createPlayer("Schmoe", "S", 20));
     };
 }
 
