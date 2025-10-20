@@ -1,5 +1,7 @@
 package com.andy.foosball.application;
 
+import com.andy.foosball.application.exceptions.MatchNotFoundException;
+import com.andy.foosball.domain.Match;
 import com.andy.foosball.domain.MatchRepository;
 import com.andy.foosball.domain.PlayerRepository;
 
@@ -11,7 +13,9 @@ public class MatchApplicationService {
     }
 
     public void endMatch(int matchId) {
-        matchRepository.getReferenceById(matchId).endMatch();
+        Match match = matchRepository.findById(matchId)
+            .orElseThrow(() -> new MatchNotFoundException());
+        match.endMatch();
     }
 
 }

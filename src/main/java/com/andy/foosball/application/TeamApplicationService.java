@@ -1,5 +1,6 @@
 package com.andy.foosball.application;
 
+import com.andy.foosball.application.exceptions.MatchNotFoundException;
 import com.andy.foosball.application.exceptions.PlayerNotFoundException;
 import com.andy.foosball.domain.Match;
 import com.andy.foosball.domain.Player;
@@ -21,7 +22,8 @@ public class TeamApplicationService {
     }
 
     public void addPlayersToTeamInMatch(String player0Name, String player1Name, Team team, int matchId) {
-        Match match = matchRepository.getReferenceById(matchId);
+        Match match = matchRepository.findById(matchId)
+            .orElseThrow(() -> new MatchNotFoundException());
         Player player0 = playerRepository.findByName(player0Name)
             .orElseThrow(() -> new PlayerNotFoundException());
         Player player1 = playerRepository.findByName(player1Name)

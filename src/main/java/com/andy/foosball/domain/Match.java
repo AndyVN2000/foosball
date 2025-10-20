@@ -43,6 +43,7 @@ public class Match {
      * Again, not really proud of this. There must be a better way
      */
     public void endMatch() {
+        System.out.println("endMatch is called in the Domain");
         if (winnerTeam == Team.RED) {
             for(Player player : redTeam) {
                 player.incrementHandicap();
