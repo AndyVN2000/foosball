@@ -38,6 +38,16 @@ Change player name.
 curl -X PUT "localhost:8080/players?name=Foo%20Bar&newName=Foo"
 ```
 
+End a foosball match (which is supposed to increment handicap of winners and decrement handicap of losers).
+
+Note: not completely sure how to write a proper request method that serves the purpose of "changing the state"
+of an entity. `PUT` seemed like the most suitable type. But what about my path? Does that make any sense in  
+a RESTful way?
+
+```bash
+curl -X PUT "localhost:8080/matches/0"
+```
+
 ## Issues
 
 I seem to be unable to make a match end properly and as result change the handicaps for the winners and losers.
