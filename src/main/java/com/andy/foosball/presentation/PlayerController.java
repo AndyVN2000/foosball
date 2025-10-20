@@ -12,6 +12,7 @@ import java.util.OptionalInt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,6 +61,14 @@ public class PlayerController {
     List<Player> getAllPlayers() {
         System.out.println("INVOKED GET ALL PLAYERS");
         return playerRepository.findAll();
+    }
+
+    // TODO
+    @Deprecated
+    @PutMapping(value = "/players", params = {"name", "newName"})
+    PlayerSummary changePlayerName(@RequestParam String name, @RequestParam String newName) {
+        playerApplicationService.findPlayerByName(name);
+        return null;
     }
 
 }
