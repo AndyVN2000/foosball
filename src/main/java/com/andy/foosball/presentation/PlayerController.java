@@ -59,9 +59,9 @@ public class PlayerController {
     }
 
     @GetMapping("/players")
-    List<Player> getAllPlayers() {
+    List<PlayerSummary> getAllPlayers() {
         System.out.println("INVOKED GET ALL PLAYERS");
-        return playerRepository.findAll();
+        return playerApplicationService.listAllPlayers();
     }
 
     @DeleteMapping(value = "/players", params = "name")
