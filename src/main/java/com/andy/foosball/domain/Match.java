@@ -6,15 +6,18 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Match {
-    private @Id int matchId;
-    private List<Player> redTeam;
-    private List<Player> blueTeam;
+    private final @Id Integer matchId;
+    private @OneToMany List<Player> redTeam;
+    private @OneToMany List<Player> blueTeam;
     private Team winnerTeam;
 
-    public Match(){}
+    public Match(int id){
+        matchId = id;
+    }
 
     /**
      * Not really proud of this. Surely there must be a better way...
