@@ -55,4 +55,12 @@ public class Player {
         return handicap;
     }
 
+    public void incrementHandicap() {
+        handicap++;
+    }
+
+    public void decrementHandicap() {
+        handicap--;
+    }
+
 }
